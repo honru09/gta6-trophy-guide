@@ -1,21 +1,21 @@
 [
   {
     "file": "1-checklist.jpg",
-    "path": "#/checklist",
+    "path": "/?open=17",
     "viewport": {
       "width": 1280,
       "height": 800
     },
-    "note": "cover: checklist with filters, progress and a guide open"
+    "note": "cover: checklist with progress tracker and The Shootist guide open with its sources (spoilers hidden)"
   },
   {
     "file": "2-guide.jpg",
-    "path": "#/checklist",
+    "path": "/?open=14&spoiler=off",
     "viewport": {
       "width": 1280,
       "height": 800
     },
-    "note": "a trophy guide open with its sources"
+    "note": "A Long Road (gold) guide open with its sources (spoilers shown)"
   },
   {
     "file": "3-roadmap.jpg",

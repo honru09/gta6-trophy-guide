@@ -309,7 +309,51 @@ button, input, select, textarea {
 
 .nav-bar-content {
   display: flex;
+  align-items: center;
   gap: 8px;
+}
+
+.nav-progress {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.85rem;
+  color: #c4b8d6;
+}
+
+.nav-progress-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: #f4eefb;
+}
+
+.nav-progress-count {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.nav-progress-track {
+  display: inline-block;
+  width: 120px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.nav-progress-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--color-coral);
+}
+
+@media (max-width: 720px) {
+  .nav-progress-title,
+  .nav-progress-track {
+    display: none;
+  }
 }
 
 .nav-tab {
@@ -803,6 +847,16 @@ button, input, select, textarea {
 
 .sources-list li {
   margin-top: 2px;
+}
+
+.sources-list a {
+  color: var(--color-coral);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.sources-list a:hover {
+  color: var(--color-coral-hover);
 }
 
 /* Missable Note Box inside Card */

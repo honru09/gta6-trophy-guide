@@ -9,6 +9,7 @@ const STATE = {
   trophies: [],
   earnedIds: new Set(),
   expandedIds: new Set(),
+  openId: null,
   activeTab: 'checklist',
   filters: {
     search: '',
@@ -159,6 +160,12 @@ function updateHeaderProgress() {
   if (percentEl) percentEl.textContent = `${percentage}%`;
   if (barEl) barEl.style.width = `${percentage}%`;
 
+  // Compact copy of the tracker in the sticky nav bar, so progress stays visible while scrolling
+  const navCountEl = document.getElementById('nav-progress-count');
+  const navFillEl = document.getElementById('nav-progress-fill');
+  if (navCountEl) navCountEl.textContent = `${earned} of ${total} Earned · ${percentage}%`;
+  if (navFillEl) navFillEl.style.width = `${percentage}%`;
+
   // Grade breakdown counts
   let platEarned = 0, platTotal = 1;
   let goldEarned = 0, goldTotal = 2;
@@ -232,6 +239,7 @@ function readUrlParams() {
     const idNum = Number(openParam);
     if (!isNaN(idNum)) {
       STATE.expandedIds.add(idNum);
+      STATE.openId = idNum;
     }
   }
 
@@ -359,7 +367,17 @@ function renderChecklist() {
         <div class="card-sources">
           <span class="sources-label">Sources:</span>
           <ul class="sources-list">
-            ${t.sources.map(s => `<li>${escapeHtml(s)}</li>`).join('')}
+            ${t.sources.map(s => {
+              if (typeof s === 'object' && s !== null) {
+                const name = s.name || s.url || '';
+                const url = s.url || '';
+                if (url) {
+                  return `<li><a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(name)}</a></li>`;
+                }
+                return `<li>${escapeHtml(name)}</li>`;
+              }
+              return `<li>${escapeHtml(String(s))}</li>`;
+            }).join('')}
           </ul>
         </div>
       `;
@@ -903,15 +921,13 @@ async function init() {
   renderMissables();
   switchTab(STATE.activeTab);
 
-  // If ?open=<id> was provided, scroll to that card
-  if (STATE.expandedIds.size > 0 && STATE.activeTab === 'checklist') {
-    const firstOpenId = Array.from(STATE.expandedIds)[0];
-    setTimeout(() => {
-      const cardEl = document.getElementById(`trophy-card-${firstOpenId}`);
-      if (cardEl) {
-        cardEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }, 100);
+  // If ?open=<id> was provided, scroll that trophy's card into view (below the sticky nav)
+  if (STATE.openId !== null && STATE.activeTab === 'checklist') {
+    const cardEl = document.getElementById(`trophy-card-${STATE.openId}`);
+    if (cardEl) {
+      cardEl.style.scrollMarginTop = '72px';
+      cardEl.scrollIntoView({ block: 'start' });
+    }
   }
 }
 
