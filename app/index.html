@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leonida Trophy Guide — GTA VI</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <div class="site-container">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-content">
+        <div class="header-titles">
+          <h1 class="header-title">Leonida Trophy Guide</h1>
+          <p class="header-subtitle">All 55 PlayStation 5 trophies — offline guide &amp; tracker</p>
+        </div>
+
+        <div class="header-tracker" aria-label="Trophy Completion Tracker">
+          <div class="tracker-main">
+            <div class="tracker-labels">
+              <span class="tracker-count" id="header-progress-count">0 of 55 Earned</span>
+              <span class="tracker-percentage" id="header-progress-percent">0%</span>
+            </div>
+            <div class="progress-bar-shell" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="55" aria-label="Overall trophy progress">
+              <div class="progress-bar-glow" id="header-progress-bar" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <div class="grade-breakdown" aria-label="Progress by Grade">
+            <div class="grade-pill grade-platinum">
+              <span class="grade-dot"></span>
+              <span class="grade-name">Platinum:</span>
+              <span class="grade-tally" id="header-platinum-count">0 / 1</span>
+            </div>
+            <div class="grade-pill grade-gold">
+              <span class="grade-dot"></span>
+              <span class="grade-name">Gold:</span>
+              <span class="grade-tally" id="header-gold-count">0 / 2</span>
+            </div>
+            <div class="grade-pill grade-silver">
+              <span class="grade-dot"></span>
+              <span class="grade-name">Silver:</span>
+              <span class="grade-tally" id="header-silver-count">0 / 6</span>
+            </div>
+            <div class="grade-pill grade-bronze">
+              <span class="grade-dot"></span>
+              <span class="grade-name">Bronze:</span>
+              <span class="grade-tally" id="header-bronze-count">0 / 46</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-bar" aria-label="Section Navigation">
+      <div class="nav-bar-content">
+        <a href="#/checklist" class="nav-tab active" id="nav-tab-checklist">Checklist</a>
+        <a href="#/roadmap" class="nav-tab" id="nav-tab-roadmap">Roadmap</a>
+        <a href="#/missables" class="nav-tab" id="nav-tab-missables">Missables</a>
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="site-main">
+      <!-- Section 1: Checklist -->
+      <section id="tab-checklist" class="tab-pane active" aria-labelledby="nav-tab-checklist">
+        <!-- Filter Bar -->
+        <div class="filter-panel" id="filter-panel">
+          <div class="filter-row filter-row-primary">
+            <div class="control-group search-control">
+              <label for="search-input" class="visually-hidden">Search trophies</label>
+              <input type="search" id="search-input" class="text-input" placeholder="Search trophy name or description...">
+            </div>
+
+            <div class="control-group select-control">
+              <label for="kind-select" class="control-label">Kind:</label>
+              <select id="kind-select" class="dropdown-select">
+                <option value="all">All Kinds</option>
+                <option value="story">Story</option>
+                <option value="missable">Missable</option>
+                <option value="collectibles">Collectibles</option>
+                <option value="activities">Activities</option>
+                <option value="online">Online</option>
+              </select>
+            </div>
+
+            <div class="control-group select-control">
+              <label for="grade-select" class="control-label">Grade:</label>
+              <select id="grade-select" class="dropdown-select">
+                <option value="all">All Grades</option>
+                <option value="platinum">Platinum</option>
+                <option value="gold">Gold</option>
+                <option value="silver">Silver</option>
+                <option value="bronze">Bronze</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-row filter-row-secondary">
+            <div class="toggle-group">
+              <label class="checkbox-container">
+                <input type="checkbox" id="filter-earned-only">
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-text">Earned only</span>
+              </label>
+
+              <label class="checkbox-container">
+                <input type="checkbox" id="filter-hide-earned">
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-text">Hide earned</span>
+              </label>
+
+              <label class="checkbox-container spoiler-container">
+                <input type="checkbox" id="filter-hide-spoilers" checked>
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-text">Hide story spoilers</span>
+              </label>
+            </div>
+
+            <div class="action-buttons">
+              <button type="button" class="btn btn-secondary" id="btn-export">Export</button>
+              <label class="btn btn-secondary file-upload-btn">
+                Import
+                <input type="file" id="input-import" accept=".json" class="visually-hidden">
+              </label>
+              <button type="button" class="btn btn-danger" id="btn-reset">Reset</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trophy List -->
+        <div class="trophy-grid" id="trophy-list" aria-live="polite">
+          <!-- Populated by app.js -->
+        </div>
+
+        <!-- Empty State Message -->
+        <div class="empty-state-box" id="checklist-empty" hidden>
+          <div class="empty-state-badge">No Results</div>
+          <h2 class="empty-state-heading" id="empty-state-heading">No Trophies Found</h2>
+          <p class="empty-state-desc" id="empty-state-desc"></p>
+        </div>
+      </section>
+
+      <!-- Section 2: Roadmap -->
+      <section id="tab-roadmap" class="tab-pane" aria-labelledby="nav-tab-roadmap" hidden>
+        <!-- Roadmap Header Banner -->
+        <div class="info-banner roadmap-banner">
+          <h2 class="banner-title">Platinum Roadmap: State of Leonida</h2>
+          <p class="banner-text">
+            Mission trophies in Grand Theft Auto VI are fully replayable through the game menu, which means nothing related to the main storyline is missable. As the game released on <strong>November 19, 2026</strong>, any requirement or strategy not yet definitively confirmed by published sources is marked as in progress rather than invented.
+          </p>
+        </div>
+
+        <div class="roadmap-phases" id="roadmap-phases">
+          <!-- Populated by app.js -->
+        </div>
+      </section>
+
+      <!-- Section 3: Missables -->
+      <section id="tab-missables" class="tab-pane" aria-labelledby="nav-tab-missables" hidden>
+        <!-- Missables Header Banner -->
+        <div class="info-banner missables-banner">
+          <h2 class="banner-title">Missable Trophies Master Warning</h2>
+          <p class="banner-text">
+            <strong>Important Rule:</strong> Chapter progression and story mission trophies are <em>NOT</em> missable because every mission can be replayed from the game menu at any time. The <strong>14 trophies</strong> below are designated as missable because they rely on open-world encounter spawns, dual-protagonist free-roam availability, unprovoked hostile gang hubs, or fragile one-time opportunity windows that advancing the story can permanently alter.
+          </p>
+        </div>
+
+        <div class="missables-list" id="missables-list">
+          <!-- Populated by app.js -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <p class="footer-primary">
+          <strong>Unofficial Fan Guide:</strong> An offline guide and progress tracker for Grand Theft Auto VI on PlayStation 5.
+        </p>
+        <p class="footer-secondary">
+          All trophy names and descriptions are shown exactly as PlayStation publishes them. This guide is an independent fan creation and is not affiliated with, sponsored by, or endorsed by Rockstar Games, Take-Two Interactive, or Sony Interactive Entertainment.
+        </p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,1297 @@
+/* ==========================================================================
+   Leonida Trophy Guide — GTA VI (PlayStation 5)
+   Offline Guide & Progress Tracker Style Sheet
+   System Fonts Only: Serif for Headings, Sans-Serif for Body
+   Color Palette: Dark Plum/Ink Header, Warm Coral Accent, Gold for Platinum,
+   Distinct Grade Colors (Gold, Silver, Bronze). No Emojis.
+   ========================================================================== */
+
+:root {
+  /* System Font Stacks */
+  --font-serif: Georgia, 'Times New Roman', Times, serif;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+
+  /* Color Palette — Plum, Ink & Coral */
+  --color-page-bg: #100a16;
+  --color-header-bg: #190e22;
+  --color-header-border: #2e1a3d;
+  --color-surface: #1a1123;
+  --color-surface-elevated: #23162f;
+  --color-surface-hover: #2d1d3b;
+  --color-border-subtle: #2d1c3a;
+  --color-border-strong: #412953;
+
+  /* Typography Colors (High Contrast) */
+  --color-text-white: #ffffff;
+  --color-text-primary: #f5eff9;
+  --color-text-secondary: #c9b9d4;
+  --color-text-muted: #8e7a9e;
+
+  /* Accent: Warm Coral */
+  --color-coral: #ff6b57;
+  --color-coral-hover: #ff8573;
+  --color-coral-subtle: rgba(255, 107, 87, 0.12);
+  --color-coral-border: rgba(255, 107, 87, 0.45);
+
+  /* Grade Colors */
+  /* Platinum: Shimmering Gold / Platinum */
+  --grade-plat-bg: #2b2207;
+  --grade-plat-border: #f59e0b;
+  --grade-plat-text: #fffbeb;
+  --grade-plat-glow: rgba(245, 158, 11, 0.25);
+
+  /* Gold: Rich Amber Gold */
+  --grade-gold-bg: #2b1c06;
+  --grade-gold-border: #d97706;
+  --grade-gold-text: #fef3c7;
+
+  /* Silver: Polished Slate Silver */
+  --grade-silver-bg: #172230;
+  --grade-silver-border: #64748b;
+  --grade-silver-text: #f1f5f9;
+
+  /* Bronze: Warm Copper Bronze */
+  --grade-bronze-bg: #291509;
+  --grade-bronze-border: #b45309;
+  --grade-bronze-text: #ffedd5;
+
+  /* Tag Colors */
+  --tag-missable-bg: #350f19;
+  --tag-missable-border: #e11d48;
+  --tag-missable-text: #ffe4e6;
+
+  --tag-kind-bg: #152238;
+  --tag-kind-border: #2563eb;
+  --tag-kind-text: #dbeafe;
+
+  /* Danger / Reset */
+  --color-danger: #ef4444;
+  --color-danger-bg: #2f0f12;
+  --color-danger-border: #b91c1c;
+  --color-danger-text: #fee2e2;
+
+  /* Success / Earned */
+  --color-success-bg: #0d2818;
+  --color-success-border: #15803d;
+  --color-success-text: #dcfce7;
+}
+
+/* Base & Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--color-page-bg);
+  color: var(--color-text-primary);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  background-color: var(--color-page-bg);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+}
+
+a {
+  color: var(--color-coral);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--color-coral-hover);
+  text-decoration: underline;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Site Layout Container */
+.site-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   Header & Progress Tracker
+   ========================================================================== */
+
+.site-header {
+  background: linear-gradient(180deg, #221330 0%, #170d21 100%);
+  border-bottom: 2px solid var(--color-header-border);
+  padding: 28px 24px 24px;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.header-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.header-title {
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text-white);
+  line-height: 1.2;
+}
+
+.header-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  font-weight: 400;
+}
+
+/* Progress Tracker */
+.header-tracker {
+  background-color: rgba(18, 11, 24, 0.7);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tracker-main {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tracker-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.tracker-count {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text-white);
+}
+
+.tracker-percentage {
+  font-size: 1.35rem;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--color-coral);
+}
+
+.progress-bar-shell {
+  width: 100%;
+  height: 12px;
+  background-color: #0b0710;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar-glow {
+  height: 100%;
+  background: linear-gradient(90deg, #d97706 0%, #ff6b57 100%);
+  border-radius: 999px;
+  transition: width 0.35s ease;
+}
+
+.grade-breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.grade-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border: 1px solid;
+}
+
+.grade-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.grade-pill.grade-platinum {
+  background-color: var(--grade-plat-bg);
+  border-color: var(--grade-plat-border);
+  color: var(--grade-plat-text);
+}
+.grade-pill.grade-platinum .grade-dot {
+  background-color: #fbbf24;
+  box-shadow: 0 0 6px rgba(251, 191, 36, 0.8);
+}
+
+.grade-pill.grade-gold {
+  background-color: var(--grade-gold-bg);
+  border-color: var(--grade-gold-border);
+  color: var(--grade-gold-text);
+}
+.grade-pill.grade-gold .grade-dot {
+  background-color: #f59e0b;
+}
+
+.grade-pill.grade-silver {
+  background-color: var(--grade-silver-bg);
+  border-color: var(--grade-silver-border);
+  color: var(--grade-silver-text);
+}
+.grade-pill.grade-silver .grade-dot {
+  background-color: #94a3b8;
+}
+
+.grade-pill.grade-bronze {
+  background-color: var(--grade-bronze-bg);
+  border-color: var(--grade-bronze-border);
+  color: var(--grade-bronze-text);
+}
+.grade-pill.grade-bronze .grade-dot {
+  background-color: #d97706;
+}
+
+.grade-tally {
+  font-weight: 700;
+  color: var(--color-text-white);
+}
+
+/* ==========================================================================
+   Navigation Tabs
+   ========================================================================== */
+
+.nav-bar {
+  background-color: #150d1e;
+  border-bottom: 1px solid var(--color-border-strong);
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.nav-bar-content {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-tab {
+  display: inline-block;
+  padding: 14px 20px;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  border-bottom: 3px solid transparent;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.nav-tab:hover {
+  color: var(--color-text-white);
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.nav-tab.active {
+  color: var(--color-coral);
+  border-bottom-color: var(--color-coral);
+  background-color: rgba(255, 107, 87, 0.06);
+}
+
+/* ==========================================================================
+   Main Content Area
+   ========================================================================== */
+
+.site-main {
+  flex: 1;
+  padding: 24px;
+}
+
+.tab-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tab-pane[hidden] {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Filter Panel (Checklist Tab)
+   ========================================================================== */
+
+.filter-panel {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+.filter-row-primary {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.control-label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.text-input {
+  width: 100%;
+  background-color: #0d0712;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 6px;
+  padding: 10px 14px;
+  color: var(--color-text-white);
+  font-size: 0.95rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: var(--color-coral);
+  box-shadow: 0 0 0 3px var(--color-coral-subtle);
+}
+
+.dropdown-select {
+  width: 100%;
+  background-color: #0d0712;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 6px;
+  padding: 10px 14px;
+  color: var(--color-text-white);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.dropdown-select:focus {
+  outline: none;
+  border-color: var(--color-coral);
+}
+
+.filter-row-secondary {
+  justify-content: space-between;
+  border-top: 1px solid var(--color-border-subtle);
+  padding-top: 14px;
+}
+
+.toggle-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Custom Checkbox (Pure CSS, No Emoji) */
+.checkbox-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.93rem;
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.checkbox-container input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-custom {
+  width: 20px;
+  height: 20px;
+  background-color: #0c0711;
+  border: 2px solid var(--color-border-strong);
+  border-radius: 4px;
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.checkbox-container input[type="checkbox"]:checked ~ .checkbox-custom {
+  background-color: var(--color-coral);
+  border-color: var(--color-coral);
+}
+
+.checkbox-container input[type="checkbox"]:checked ~ .checkbox-custom::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-container input[type="checkbox"]:focus ~ .checkbox-custom {
+  box-shadow: 0 0 0 3px var(--color-coral-subtle);
+}
+
+.spoiler-container {
+  color: #ffb4a8;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.btn-secondary {
+  background-color: var(--color-surface-elevated);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-surface-hover);
+  border-color: var(--color-coral-border);
+  color: var(--color-text-white);
+}
+
+.btn-danger {
+  background-color: var(--color-danger-bg);
+  border-color: var(--color-danger-border);
+  color: var(--color-danger-text);
+}
+
+.btn-danger:hover {
+  background-color: #451319;
+  border-color: #dc2626;
+  color: #ffffff;
+}
+
+.file-upload-btn {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Trophy Cards Grid & Card Components
+   ========================================================================== */
+
+.trophy-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.trophy-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 10px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.18s ease, background-color 0.18s ease, transform 0.1s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.trophy-card:hover {
+  background-color: var(--color-surface-elevated);
+  border-color: #55356e;
+}
+
+.trophy-card.is-earned {
+  border-left: 5px solid var(--color-coral);
+  background-color: rgba(35, 22, 47, 0.7);
+}
+
+.trophy-card.is-expanded {
+  border-color: var(--color-coral);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 4px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid;
+  line-height: 1.3;
+}
+
+.badge-platinum {
+  background-color: var(--grade-plat-bg);
+  border-color: var(--grade-plat-border);
+  color: var(--grade-plat-text);
+}
+
+.badge-gold {
+  background-color: var(--grade-gold-bg);
+  border-color: var(--grade-gold-border);
+  color: var(--grade-gold-text);
+}
+
+.badge-silver {
+  background-color: var(--grade-silver-bg);
+  border-color: var(--grade-silver-border);
+  color: var(--grade-silver-text);
+}
+
+.badge-bronze {
+  background-color: var(--grade-bronze-bg);
+  border-color: var(--grade-bronze-border);
+  color: var(--grade-bronze-text);
+}
+
+.badge-kind {
+  background-color: var(--tag-kind-bg);
+  border-color: var(--tag-kind-border);
+  color: var(--tag-kind-text);
+}
+
+.badge-missable {
+  background-color: var(--tag-missable-bg);
+  border-color: var(--tag-missable-border);
+  color: var(--tag-missable-text);
+}
+
+/* Earned Toggle in Card */
+.card-toggle-earned {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background-color: rgba(14, 8, 20, 0.6);
+  border: 1px solid var(--color-border-subtle);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  transition: all 0.15s ease;
+}
+
+.card-toggle-earned:hover {
+  background-color: rgba(255, 107, 87, 0.12);
+  border-color: var(--color-coral-border);
+  color: var(--color-text-white);
+}
+
+.card-toggle-earned input[type="checkbox"] {
+  accent-color: var(--color-coral);
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+}
+
+/* Card Body */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card-name {
+  font-family: var(--font-serif);
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: var(--color-text-white);
+  line-height: 1.3;
+}
+
+.card-id-label {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.card-description {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* Guide Expand Trigger */
+.card-expand-hint {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-coral);
+  margin-top: 4px;
+}
+
+.chevron-icon {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.trophy-card.is-expanded .chevron-icon {
+  transform: rotate(-135deg);
+}
+
+/* Inline Guide Section */
+.card-guide-drawer {
+  margin-top: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.guide-heading {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-coral);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.guide-text {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+}
+
+.guide-text.is-placeholder {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* Sources inside Card */
+.card-sources {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background-color: rgba(10, 6, 14, 0.45);
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border-subtle);
+}
+
+.sources-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.sources-list {
+  list-style: square inside;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.sources-list li {
+  margin-top: 2px;
+}
+
+/* Missable Note Box inside Card */
+.card-missable-warning {
+  background-color: var(--tag-missable-bg);
+  border: 1px solid var(--tag-missable-border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.missable-warning-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--tag-missable-text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.missable-warning-text {
+  font-size: 0.92rem;
+  color: #fecdd3;
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   Empty States
+   ========================================================================== */
+
+.empty-state-box {
+  background-color: var(--color-surface);
+  border: 2px dashed var(--color-border-strong);
+  border-radius: 12px;
+  padding: 48px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: 680px;
+  margin: 20px auto;
+}
+
+.empty-state-box[hidden] {
+  display: none !important;
+}
+
+.empty-state-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background-color: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-coral);
+}
+
+.empty-state-heading {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--color-text-white);
+}
+
+.empty-state-desc {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  max-width: 520px;
+}
+
+/* ==========================================================================
+   Roadmap Section Styling
+   ========================================================================== */
+
+.info-banner {
+  background: linear-gradient(135deg, #261633 0%, #190f23 100%);
+  border: 1px solid var(--color-border-strong);
+  border-left: 6px solid var(--color-coral);
+  border-radius: 10px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.banner-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-text-white);
+}
+
+.banner-text {
+  font-size: 0.98rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.banner-text strong {
+  color: var(--color-text-white);
+}
+
+.roadmap-phases {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.roadmap-phase-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+.phase-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding-bottom: 12px;
+}
+
+.phase-pill {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background-color: var(--color-coral-subtle);
+  border: 1px solid var(--color-coral-border);
+  color: var(--color-coral);
+}
+
+.phase-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text-white);
+}
+
+.phase-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 0;
+}
+
+.phase-bullet-item {
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.98rem;
+  color: var(--color-text-primary);
+  line-height: 1.55;
+}
+
+.phase-bullet-item::before {
+  content: "•";
+  position: absolute;
+  left: 4px;
+  top: 0;
+  color: var(--color-coral);
+  font-size: 1.2rem;
+}
+
+.phase-trophies-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: rgba(12, 7, 16, 0.6);
+  border-radius: 8px;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border-subtle);
+}
+
+.phase-trophies-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.phase-trophies-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.trophy-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background-color: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 6px;
+  font-size: 0.84rem;
+  color: var(--color-text-secondary);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.trophy-chip:hover {
+  background-color: var(--color-surface-hover);
+  border-color: var(--color-coral);
+  color: var(--color-text-white);
+  text-decoration: none;
+}
+
+.trophy-chip.chip-earned {
+  border-color: var(--color-coral-border);
+  color: var(--color-text-white);
+}
+
+.trophy-chip.chip-earned::after {
+  content: "✓";
+  font-weight: 700;
+  color: var(--color-coral);
+  font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   Missables Section Styling
+   ========================================================================== */
+
+.missables-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.missable-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-left: 5px solid var(--tag-missable-border);
+  border-radius: 10px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.missable-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.missable-name-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.missable-name {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-text-white);
+}
+
+.missable-desc {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.missable-alert-box {
+  background-color: var(--tag-missable-bg);
+  border: 1px solid var(--tag-missable-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.alert-tag {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--tag-missable-text);
+}
+
+.alert-message {
+  font-size: 0.94rem;
+  color: #ffe4e6;
+  line-height: 1.5;
+}
+
+.missable-timing-box {
+  background-color: rgba(255, 107, 87, 0.08);
+  border: 1px solid var(--color-coral-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.timing-tag {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-coral);
+}
+
+.timing-message {
+  font-size: 0.94rem;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+.missable-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--color-border-subtle);
+  padding-top: 12px;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.site-footer {
+  background-color: #120b18;
+  border-top: 1px solid var(--color-border-strong);
+  padding: 28px 24px;
+  margin-top: 40px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-primary {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+}
+
+.footer-primary strong {
+  color: var(--color-text-white);
+}
+
+.footer-disclaimer {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   Designed to stay crisp down to 360px and in 768px screenshots
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  .filter-row-primary {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    padding: 20px 16px;
+  }
+
+  .header-title {
+    font-size: 1.8rem;
+  }
+
+  .site-main {
+    padding: 16px;
+  }
+
+  .filter-panel {
+    padding: 14px 16px;
+  }
+
+  .filter-row-secondary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .toggle-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .action-buttons {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .trophy-card {
+    padding: 16px;
+  }
+
+  .card-name {
+    font-size: 1.15rem;
+  }
+
+  .grade-breakdown {
+    gap: 6px;
+  }
+
+  .grade-pill {
+    padding: 4px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-title {
+    font-size: 1.5rem;
+  }
+
+  .nav-bar {
+    padding: 0 12px;
+  }
+
+  .nav-tab {
+    padding: 12px 14px;
+    font-size: 0.98rem;
+  }
+
+  .action-buttons {
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    flex: 1 1 auto;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card-toggle-earned {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 360px) {
+  .site-header {
+    padding: 16px 10px;
+  }
+
+  .site-main {
+    padding: 10px;
+  }
+
+  .nav-tab {
+    padding: 10px 10px;
+    font-size: 0.9rem;
+  }
+
+  .grade-pill {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

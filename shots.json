@@ -1,0 +1,38 @@
+[
+  {
+    "file": "1-checklist.jpg",
+    "path": "#/checklist",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "note": "cover: checklist with filters, progress and a guide open"
+  },
+  {
+    "file": "2-guide.jpg",
+    "path": "#/checklist",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "note": "a trophy guide open with its sources"
+  },
+  {
+    "file": "3-roadmap.jpg",
+    "path": "#/roadmap",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "note": "roadmap to the platinum"
+  },
+  {
+    "file": "4-missables.jpg",
+    "path": "#/missables",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "note": "missable trophies flagged"
+  }
+]
